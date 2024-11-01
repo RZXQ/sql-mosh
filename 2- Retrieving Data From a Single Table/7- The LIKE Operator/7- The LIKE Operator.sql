@@ -1,6 +1,9 @@
 -- Explanation of wildcard characters:
 -- - % (percent sign): matches any number of characters (including zero)
 -- - _ (underscore): matches exactly one character
+SELECT *
+FROM customers
+WHERE last_name LIKE 'b%';
 
 SELECT *
 FROM customers
@@ -39,8 +42,8 @@ FROM customers
 WHERE address LIKE '%trail%'
    OR address LIKE '%avenue%';
 
--- 6. Select customers whose phone number contains '9'
--- - '%9' matches any phone number that has '9' in any position
+-- 6. Select customers whose phone number ends with '9'
+-- - '%9' matches any phone number that ends with the digit '9'
 SELECT *
 FROM customers
 WHERE phone LIKE '%9';
