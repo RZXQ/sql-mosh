@@ -11,72 +11,67 @@ Summary:
    - REGEXP: Advanced pattern matching with regular expressions
 */
 
--- 1. LIKE and REGEXP Basics
--- 1.1. LIKE pattern matching (contains 'field')
+-- Select customers whose last name contains 'field' (LIKE).
 SELECT *
 FROM customers
 WHERE last_name LIKE '%field%';
 
--- 1.2. REGEXP pattern matching (contains 'field')
+-- Select customers whose last name contains 'field' (REGEXP).
 SELECT *
 FROM customers
 WHERE last_name REGEXP 'field';
 
--- 2. Anchors in REGEXP
--- 2.1. ^ Beginning of string (starts with 'field')
+-- Select customers whose last name starts with 'field'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP '^field';
 
--- 2.2. $ End of string (ends with 'field')
+-- Select customers whose last name ends with 'field'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP 'field$';
 
--- 3. Logical OR in REGEXP
--- 3.1. Match beginning of string 'field', 'mac', or 'rose'
+-- Select customers whose last name starts with 'field', 'mac', or 'rose'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP '^field|mac|rose';
 
--- 3.2. Match end of string 'field', or 'mac', or 'rose'
+-- Select customers whose last name ends with 'field', 'mac', or 'rose'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP 'field$|mac|rose';
 
--- 4. Character Classes and Ranges in REGEXP
--- 4.1. Match 'ge', 'me', or 'ie'
+-- Select customers whose last name contains 'ge', 'me', or 'ie'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP '[gim]e';
 
--- 4.2. Match 'ef', 'em', or 'eq'
+-- Select customers whose last name contains 'ef', 'em', or 'eq'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP 'e[fmq]';
 
--- 4.3. Match any letter from 'a' to 'h' followed by 'e'
+-- Select customers whose last name contains any letter from 'a' to 'h' followed by 'e'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP '[a-h]e';
 
--- 5. Exercises
--- 5.1. Match 'elka' or 'ambur' in first_name
+-- Select customers whose first name contains 'elka' or 'ambur'.
 SELECT *
 FROM customers
 WHERE first_name REGEXP 'elka|ambur';
 
--- 5.2. Match last names ending with 'ey' or 'on'
+-- Select customers whose last name ends with 'ey' or 'on'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP 'ey$|on$';
 
--- 5.3. Match beginning with 'my' or contains 'se'
+-- Select customers whose last name starts with 'my' or contains 'se'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP '^my|se';
 
--- 5.4. Match 'br' or 'bu' in last_name
+-- Select customers whose last name contains 'br' or 'bu'.
 SELECT *
 FROM customers
 WHERE last_name REGEXP 'b[ru]'; -- or using where last_name REGEXP 'br|bu'
