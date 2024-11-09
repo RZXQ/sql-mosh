@@ -1,6 +1,6 @@
 USE sql_store;
 
--- Select all columns from 'customers' where customer_id is 1, ordered by first_name.
+-- Select all columns from 'customers' table for customer with customer_id = 1, ordered by first_name.
 SELECT *
 FROM customers
 WHERE customer_id = 1

@@ -10,6 +10,7 @@ Summary:
  */
 SELECT *
 FROM customers;
+-- Select all columns from the customers table.
 
 -- Select customers sorted by first name in ascending order.
 SELECT *
