@@ -14,13 +14,17 @@ USE sql_store;
 -- Joins 'customers' with 'orders' using INNER JOIN
 -- On condition: matching 'customer_id' in both tables
 -- Note: INNER JOIN excludes customers without orders
-SELECT c.first_name, o.order_id
+SELECT c.customer_id, c.first_name, o.order_id
 FROM customers c
-         LEFT JOIN orders o ON c.customer_id = o.customer_id;
+         JOIN orders o ON c.customer_id = o.customer_id;
+
 -- Selects 'customer_id' and 'first_name' from 'customers' table, 'order_id' from 'orders' table
 -- Joins 'customers' with 'orders' using LEFT JOIN
 -- On condition: matching 'customer_id' in both tables
 -- Note: LEFT JOIN includes all customers, even those without orders
+SELECT c.customer_id, c.first_name, o.order_id
+FROM customers c
+         LEFT JOIN orders o ON c.customer_id = o.customer_id;
 
 -- Selects 'customer_id' and 'first_name' from 'customers' table, 'order_id' from 'orders' table
 -- Joins 'customers' with 'orders' using RIGHT JOIN
