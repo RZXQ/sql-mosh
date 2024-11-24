@@ -3,7 +3,7 @@ USE sql_store;
 -- Adds multiple new records to the 'shippers' table
 -- Columns: 'name'
 -- Values: ('Shipper1'), ('Shipper2'), ('Shipper3')
-INSERT INTO shippers (name)
+INSERT INTO shippers(name)
 VALUES ('Shipper1'),
        ('Shipper2'),
        ('Shipper3');
