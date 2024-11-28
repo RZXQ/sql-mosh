@@ -1,5 +1,14 @@
 USE sql_invoicing;
 
+# 1. **FROM**: Specifies the tables to retrieve data from.
+# 2. **JOIN**: Combines rows from two or more tables based on a related column between them.
+# 3. **WHERE**: Filters the rows based on a specified condition.
+# 4. **GROUP BY**: Groups rows sharing a property so that aggregate functions can be applied to each group.
+# 5. **HAVING**: Filters groups based on a specified condition (used only with `GROUP BY`).
+# 6. **SELECT**: Specifies the columns to retrieve.
+# 7. **ORDER BY**: Specifies the order in which to return the rows.
+# 8. **LIMIT**/**OFFSET**: Specifies the number of rows to return and from which point to start (optional).
+
 -- Selects max, min, avg, total (with 10% tax), count of invoices,
 -- count of records, count of client IDs, and count of distinct client IDs
 -- from the invoices table where invoice date is after '2019-07-01'
