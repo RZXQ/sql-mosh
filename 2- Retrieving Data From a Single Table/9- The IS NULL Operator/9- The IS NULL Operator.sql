@@ -6,16 +6,19 @@ Summary:
 */
 
 -- Select customers whose phone number is NULL.
+use sql_store;
 SELECT *
 FROM customers
 WHERE phone IS NULL;
 
 -- Select customers whose phone number is NOT NULL.
+use sql_store;
 SELECT *
 FROM customers
 WHERE phone IS NOT NULL;
 
 -- Select orders where shipped_date is NULL.
+use sql_store;
 SELECT *
 FROM orders
 WHERE shipped_date IS NULL;
