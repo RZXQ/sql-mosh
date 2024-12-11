@@ -1,20 +1,24 @@
+-- Query: Retrieve customer details, their orders, and assigned shipper
+-- Select: customer_id, first_name from customers; order_id from orders; name (as shipper) from shippers
+-- From: customers (c)
+-- Join: orders (o) on c.customer_id = o.customer_id using LEFT JOIN
+-- Join: shippers (sh) on o.shipper_id = sh.shipper_id using LEFT JOIN
+-- Note: Includes all customers, even those without orders, and includes orders without shippers
 USE sql_store;
-
--- Selects 'customer_id' and 'first_name' from 'customers' table, 'order_id' from the result of joining 'customers' and 'orders',
--- and 'name' from 'shippers' table as 'shipper'
--- First joins 'customers' with 'orders' using LEFT JOIN to include all customers, even those without orders
--- Then joins the resulting table with 'shippers' using LEFT JOIN to include all customers and their orders, even if an order has no assigned shipper
 SELECT c.customer_id, c.first_name, o.order_id, sh.name AS shipper
 FROM customers c
          LEFT JOIN orders o ON c.customer_id = o.customer_id
          LEFT JOIN shippers sh ON o.shipper_id = sh.shipper_id
 ORDER BY c.customer_id;
 
--- Selects 'order_id' and 'order_date' from 'orders' table, 'first_name' from 'customers' as 'customer',
--- 'name' from 'shippers' as 'shipper', and 'name' from 'order_statuses' as 'status'
--- Joins 'orders' with 'customers' using INNER JOIN because each order must have a customer
--- Joins the resulting table with 'shippers' using LEFT JOIN to include all orders, even those without a shipper
--- Joins the resulting table with 'order_statuses' using INNER JOIN as each order must have a valid status
+-- Query: Retrieve order details, customer name, shipper name, and order status
+-- Select: order_id, order_date from orders; first_name (as customer) from customers; name (as shipper) from shippers; name (as status) from order_statuses
+-- From: orders (o)
+-- Join: customers (c) on o.customer_id = c.customer_id using INNER JOIN
+-- Join: shippers (sh) on o.shipper_id = sh.shipper_id using LEFT JOIN
+-- Join: order_statuses (os) on o.status = os.order_status_id using INNER JOIN
+-- Note: Includes all orders with customers and their statuses, even if the order has no shipper
+USE sql_store;
 SELECT o.order_id, o.order_date, c.first_name AS customer, sh.name AS shipper, os.name AS status
 FROM orders o
          JOIN customers c ON o.customer_id = c.customer_id
