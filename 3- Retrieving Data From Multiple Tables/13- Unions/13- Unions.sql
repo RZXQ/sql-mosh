@@ -1,10 +1,9 @@
+-- Query: Retrieve order IDs, dates, and statuses for active and archived orders
+-- Select: order_id, order_date, 'Active' as status from orders where order_date >= '2019-01-01'
+-- Select: order_id, order_date, 'Archived' as status from orders where order_date < '2019-01-01'
+-- Combine: Both queries using UNION to merge results
+-- Note: Column names and types must match for UNION
 USE sql_store;
-
--- Selects order IDs, order dates, and status for both active and archived orders from the 'orders' table
--- Uses UNION to combine two separate queries:
---   1. Active orders with 'Active' status where 'order_date' is on or after '2019-01-01'
---   2. Archived orders with 'Archived' status where 'order_date' is before '2019-01-01'
--- Note: The column numbers and types in both queries must match for the UNION operation
 SELECT order_id, order_date, 'Active' AS status
 FROM orders
 WHERE order_date >= '2019-01-01'
@@ -13,21 +12,25 @@ SELECT order_id, order_date, 'Archived' AS status
 FROM orders
 WHERE order_date < '2019-01-01';
 
--- Retrieves full names of all customers and shippers from 'customers' and 'shippers' tables
--- Uses UNION to combine customer names (as 'first_name') and shipper names (as 'name') into a single column, labeled as 'full_name'
--- Ensures column names are consistent across both queries for proper UNION execution
+-- Query: Retrieve full names of customers and shippers in a single column
+-- Select: first_name as full_name from customers
+-- Select: name from shippers
+-- Combine: Both queries using UNION to merge results
+-- Note: Ensures column names are consistent across both queries
+USE sql_store;
 SELECT first_name AS full_name
 FROM customers
 UNION
 SELECT name
 FROM shippers;
 
--- Categorizes customers based on their points into 'Bronze', 'Silver', and 'Gold' types
--- 1. Retrieves customers with < 2000 points and assigns them 'Bronze' type
--- 2. Retrieves customers with 2000-3000 points (inclusive) and assigns them 'Silver' type
--- 3. Retrieves customers with > 3000 points and assigns them 'Gold' type
--- Uses UNION to combine these three customer categories into one result set
--- Orders the final result by 'first_name' in ascending order
+-- Query: Categorize customers based on points into Bronze, Silver, and Gold
+-- Select: customers with points < 2000 as 'Bronze'
+-- Select: customers with points BETWEEN 2000 AND 3000 as 'Silver'
+-- Select: customers with points > 3000 as 'Gold'
+-- Combine: All three queries using UNION to merge results
+-- Order: By first_name in ascending order
+USE sql_store;
 SELECT customer_id, first_name, points, 'Bronze' AS type
 FROM customers
 WHERE points < 2000
