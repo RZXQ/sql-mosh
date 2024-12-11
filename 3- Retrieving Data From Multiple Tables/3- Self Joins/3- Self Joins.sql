@@ -1,8 +1,9 @@
+-- Query: Retrieve employee and manager details
+-- Select: employee_id, first_name from employees (e); first_name (as manager) from employees (m)
+-- From: employees (e)
+-- Join: employees (m) (self-join)
+-- Condition: e.reports_to = m.employee_id
 USE sql_hr;
-
--- Selects 'employee_id' and 'first_name' from 'employees' table as employee details
--- Joins 'employees' table with itself to get manager details
--- On condition: 'reports_to' in employee matches 'employee_id' in manager
 SELECT e.employee_id, e.first_name, m.first_name AS manager
 FROM employees e
          JOIN employees m
