@@ -5,7 +5,6 @@
 -- Note: NATURAL JOIN automatically detects matching column names but can lead to unpredictable behavior
 --       if column names unintentionally match or change over time
 USE sql_store;
-
 SELECT o.order_id, c.first_name
 FROM orders o
          NATURAL JOIN customers c;
