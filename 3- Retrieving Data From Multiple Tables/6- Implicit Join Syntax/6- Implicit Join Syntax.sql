@@ -1,19 +1,18 @@
+-- Query: Retrieve all columns from orders and customers using explicit join syntax
+-- Select: all columns from orders and customers
+-- From: orders (o)
+-- Join: customers (c) on o.customer_id = c.customer_id
 USE sql_store;
-
--- the original query(explicit join syntax):
--- Selects all columns from 'orders' table
--- Joins 'orders' with 'customers' table from 'sql_store' database
--- On condition: matching 'customer_id' in both tables
 SELECT *
 FROM orders o
          JOIN customers c ON o.customer_id = c.customer_id;
 
--- Implicit join syntax:
--- Selects all columns from 'orders' table
--- Joins 'orders' with 'customers' table from 'sql_store' database using implicit join syntax
--- On condition: matching 'customer_id' in both tables
--- Note: Implicit join syntax (using WHERE clause for joins) is supported in MySQL but generally not recommended
--- The implicit join syntax essentially creates an inner join and cannot specify the inclusion of all rows from the left table when there are no matching rows in the right table.
+-- Query: Retrieve all columns from orders and customers using implicit join syntax
+-- Select: all columns from orders and customers
+-- From: orders (o), customers (c)
+-- Condition: o.customer_id = c.customer_id (specified in WHERE clause)
+-- Note: Implicit join syntax uses the WHERE clause and is equivalent to an inner join
+USE sql_store;
 SELECT *
 FROM orders o,
      customers c
