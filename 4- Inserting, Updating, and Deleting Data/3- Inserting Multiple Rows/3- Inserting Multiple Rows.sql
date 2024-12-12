@@ -1,17 +1,21 @@
-USE sql_store;
-
--- Adds multiple new records to the 'shippers' table
--- Columns: 'name'
+-- Query: Insert multiple new records into the 'shippers' table
+-- Select: 'name' column
+-- From: shippers
 -- Values: ('Shipper1'), ('Shipper2'), ('Shipper3')
-INSERT INTO shippers(name)
+-- Note: Adds new shippers to the table with their respective names
+USE sql_store;
+INSERT INTO shippers (name)
 VALUES ('Shipper1'),
        ('Shipper2'),
        ('Shipper3');
 
--- Adds multiple new records to the 'products' table
--- Columns: 'name', 'quantity_in_stock', 'unit_price'
--- Values: ('Product1', 10, 1.95), ('Product2', 11, 1.95), ('Product3', 12, 1.95)
+-- Query: Insert multiple new records into the 'products' table
+-- Select: 'name', 'quantity_in_stock', 'unit_price' columns
+-- From: products
+-- Values: ('Product1', 10, 1.95), ('Product2', 11, 1.95), ('Product3', 12, 1.95')
+-- Note: Adds new products with names, stock quantities, and unit prices
+USE sql_store;
 INSERT INTO products (name, quantity_in_stock, unit_price)
 VALUES ('Product1', 10, 1.95),
        ('Product2', 11, 1.95),
-       ('Product3', 12, 1.95)
+       ('Product3', 12, 1.95);
