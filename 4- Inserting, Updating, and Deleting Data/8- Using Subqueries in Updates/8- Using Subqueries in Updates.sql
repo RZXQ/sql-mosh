@@ -23,9 +23,7 @@ WHERE client_id = (SELECT c.client_id
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
-WHERE client_id IN (SELECT c.client_id
-                    FROM clients c
-                    WHERE state IN ('CA', 'NY'));
+WHERE client_id IN (SELECT c.client_id FROM clients c WHERE state IN ('CA', 'NY'));
 
 -- Query: Update payment details for invoices with no payment date
 -- Update Table: `invoices`
@@ -48,6 +46,4 @@ WHERE payment_date IS NULL;
 USE sql_store;
 UPDATE orders
 SET comments = 'Gold customer'
-WHERE customer_id IN (SELECT customer_id
-                      FROM customers
-                      WHERE points > 3000);
+WHERE customer_id IN (SELECT customer_id FROM customers WHERE points > 3000);
