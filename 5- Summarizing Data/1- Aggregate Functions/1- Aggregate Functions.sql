@@ -1,17 +1,16 @@
+-- Query: Retrieve aggregated statistics from the `invoices` table
+-- Select:
+--   - MAX(invoice_total) as highest
+--   - MIN(invoice_total) as lowest
+--   - AVG(invoice_total) as average
+--   - SUM(invoice_total * 1.1) as total (with 10% tax)
+--   - COUNT(invoice_total) as number_of_invoices
+--   - COUNT(*) as total_records
+--   - COUNT(client_id) as client_id
+--   - COUNT(DISTINCT client_id) as distinct_client_id
+-- From: `invoices`
+-- Filter: Includes only rows where `invoice_date` is after '2019-07-01'
 USE sql_invoicing;
-
-# 1. **FROM**: Specifies the tables to retrieve data from.
-# 2. **JOIN**: Combines rows from two or more tables based on a related column between them.
-# 3. **WHERE**: Filters the rows based on a specified condition.
-# 4. **GROUP BY**: Groups rows sharing a property so that aggregate functions can be applied to each group.
-# 5. **HAVING**: Filters groups based on a specified condition (used only with `GROUP BY`).
-# 6. **SELECT**: Specifies the columns to retrieve.
-# 7. **ORDER BY**: Specifies the order in which to return the rows.
-# 8. **LIMIT**/**OFFSET**: Specifies the number of rows to return and from which point to start (optional).
-
--- Selects max, min, avg, total (with 10% tax), count of invoices,
--- count of records, count of client IDs, and count of distinct client IDs
--- from the invoices table where invoice date is after '2019-07-01'
 SELECT MAX(invoice_total)        AS highest,
        MIN(invoice_total)        AS lowest,
        AVG(invoice_total)        AS average,
@@ -23,10 +22,18 @@ SELECT MAX(invoice_total)        AS highest,
 FROM invoices
 WHERE invoice_date > '2019-07-01';
 
--- Summarizes total sales, total payments, and outstanding amounts
--- for the first half of 2019
--- Unions with: the same summary for the second half of 2019
--- Unions with: the same summary for the whole of 2019
+-- Query: Summarize total sales, payments, and outstanding amounts for specified periods
+-- Select:
+--   - Summary label (e.g., 'First half of 2019', 'Second half of 2019', 'Total')
+--   - SUM(invoice_total) as total_sales
+--   - SUM(payment_total) as total_payments
+--   - SUM(invoice_total - payment_total) as what_we_expect (outstanding amounts)
+-- From: `invoices`
+-- Filter:
+--   - First half of 2019: `invoice_date` between '2019-01-01' and '2019-06-30'
+--   - Second half of 2019: `invoice_date` between '2019-07-01' and '2019-12-31'
+--   - Full year of 2019: `invoice_date` between '2019-01-01' and '2019-12-31'
+-- Union: Combines results from the three time periods into one result set
 SELECT 'First half of 2019',
        SUM(invoice_total)                 AS total_sales,
        SUM(payment_total)                 AS total_payments,
