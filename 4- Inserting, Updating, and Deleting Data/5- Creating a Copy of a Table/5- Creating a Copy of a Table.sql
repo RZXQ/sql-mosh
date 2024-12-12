@@ -1,30 +1,34 @@
--- Switches to the `sql_store` database
+-- Query: Create a new table `orders_archived` with the same structure and data as the `orders` table
+-- Create Table: `orders_archived`
+-- Source: Copies all columns and data from the `orders` table
+-- Note: Primary key and AUTO_INCREMENT properties are not copied
 USE sql_store;
-
--- Creates a new table `orders_archived` with the same structure and data as the `orders` table
--- Note: The primary key and AUTO_INCREMENT properties will not be copied to the new table
 CREATE TABLE orders_archived AS
 SELECT *
 FROM orders;
 
--- Truncates the `orders_archived` table
--- Removes all data from the table but preserves its structure
+-- Query: Truncate the `orders_archived` table
+-- Truncate Table: `orders_archived`
+-- Note: Removes all data but preserves the table structure
+USE sql_store;
 TRUNCATE TABLE orders_archived;
 
--- Copies records from the `orders` table to the `orders_archived` table
--- Only copies records where `order_date` is earlier than '2019-01-01'
+-- Query: Copy specific records from `orders` to `orders_archived`
+-- Insert Into: `orders_archived`
+-- Source: Selects all columns from `orders`
+-- Filter: Copies records where `order_date` is earlier than '2019-01-01'
+USE sql_store;
 INSERT INTO orders_archived
 SELECT *
 FROM orders
 WHERE order_date < '2019-01-01';
 
--- Switches to the `sql_invoicing` database
+-- Query: Create a new table `invoices_archived` with specific columns and data
+-- Create Table: `invoices_archived`
+-- Columns: invoice_id, number, client (from `clients`), invoice_total, payment_total, invoice_date, payment_date, due_date
+-- Source: Combines data from `invoices` and `clients` via INNER JOIN on `client_id`
+-- Filter: Only includes records where `payment_date` is not null
 USE sql_invoicing;
-
--- Creates a new table `invoices_archived` with a specific structure and data from `invoices`
--- Includes invoice_id, number, client name (from the `clients` table), invoice_total, payment_total, invoice_date, payment_date, and due_date
--- Joins `invoices` with `clients` on client_id
--- Only copies records where `payment_date` is not null
 CREATE TABLE invoices_archived AS
 SELECT i.invoice_id,
        i.number,
