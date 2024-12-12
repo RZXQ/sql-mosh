@@ -15,6 +15,7 @@ FROM orders;
 -- Values for first record: (LAST_INSERT_ID(), 1, 1, 2.95)
 -- Values for second record: (LAST_INSERT_ID(), 2, 1, 3.95)
 -- Note: References the last inserted order_id using LAST_INSERT_ID()
+USE sql_store;
 INSERT INTO order_items (order_id, product_id, quantity, unit_price)
 VALUES (LAST_INSERT_ID(), 1, 1, 2.95),
        (LAST_INSERT_ID(), 2, 1, 3.95);
