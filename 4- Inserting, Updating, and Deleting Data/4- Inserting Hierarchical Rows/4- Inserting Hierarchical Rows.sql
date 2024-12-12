@@ -6,13 +6,15 @@
 USE sql_store;
 INSERT INTO orders (customer_id, order_date, status)
 VALUES (1, '2019-01-02', 1);
+SELECT *
+FROM orders;
 
 -- Query: Insert two new records into the 'order_items' table
 -- Insert Into: 'order_items' table
--- Columns: order_id, item_id, product_id, list_price
+-- Columns: order_id, product_id, quantity, unit_price
 -- Values for first record: (LAST_INSERT_ID(), 1, 1, 2.95)
 -- Values for second record: (LAST_INSERT_ID(), 2, 1, 3.95)
 -- Note: References the last inserted order_id using LAST_INSERT_ID()
-INSERT INTO order_items
+INSERT INTO order_items (order_id, product_id, quantity, unit_price)
 VALUES (LAST_INSERT_ID(), 1, 1, 2.95),
        (LAST_INSERT_ID(), 2, 1, 3.95);
