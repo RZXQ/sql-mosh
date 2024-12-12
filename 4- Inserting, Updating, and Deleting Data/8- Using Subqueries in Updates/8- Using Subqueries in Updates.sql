@@ -20,6 +20,7 @@ WHERE client_id = (SELECT c.client_id
 --   - payment_date (set to due_date)
 -- Filter: Updates rows where client_id matches the client_id of clients in 'CA' or 'NY'
 -- Note: Uses a subquery to find client_ids based on the state
+USE sql_invoicing;
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
@@ -32,6 +33,7 @@ WHERE client_id IN (SELECT c.client_id FROM clients c WHERE state IN ('CA', 'NY'
 --   - payment_date (set to due_date)
 -- Filter: Updates rows where payment_date is NULL
 -- Note: Ensures all unpaid invoices have updated payment details
+USE sql_invoicing;
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
