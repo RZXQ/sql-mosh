@@ -1,17 +1,24 @@
+-- Query: Reset payment details for a specific invoice
+-- Update Table: `invoices`
+-- Columns:
+--   - payment_total (set to default value, 0)
+--   - payment_date (set to NULL)
+-- Filter: Only updates the row where invoice_id is 1
+-- Note: The keyword 'DEFAULT' uses the column's default value defined in the schema
 USE sql_invoicing;
-
--- Sets the payment_total to its default value (0) and payment_date to NULL
--- for the row in the invoices table where the invoice_id is 1
--- The keyword 'default' means that MySQL will use the default value for
--- the 'payment_total' column, which is set to 0
 UPDATE invoices
-SET payment_total = default,
+SET payment_total = DEFAULT,
     payment_date  = NULL
 WHERE invoice_id = 1;
 
--- Updates the payment_total to be 50% of the invoice_total and sets the
--- payment_date to the due_date for the row in the invoices table
--- where the invoice_id is 3
+-- Query: Update payment details for a specific invoice
+-- Update Table: `invoices`
+-- Columns:
+--   - payment_total (set to 50% of the invoice_total)
+--   - payment_date (set to due_date)
+-- Filter: Only updates the row where invoice_id is 3
+-- Note: Calculates payment_total as half of invoice_total and sets payment_date to the due_date
+USE sql_invoicing;
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
