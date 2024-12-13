@@ -34,6 +34,7 @@ WHERE invoice_date > '2019-07-01';
 --   - Second half of 2019: `invoice_date` between '2019-07-01' and '2019-12-31'
 --   - Full year of 2019: `invoice_date` between '2019-01-01' and '2019-12-31'
 -- Union: Combines results from the three time periods into one result set
+USE sql_invoicing;
 SELECT 'First half of 2019',
        SUM(invoice_total)                 AS total_sales,
        SUM(payment_total)                 AS total_payments,
