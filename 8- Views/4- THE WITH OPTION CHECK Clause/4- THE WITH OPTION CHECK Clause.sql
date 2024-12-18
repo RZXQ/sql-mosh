@@ -1,5 +1,6 @@
 -- The WITH CHECK OPTION enforces that any INSERT or UPDATE operations performed through the view must satisfy the WHERE condition of the view.
-    
+-- Direct modifications to the base table bypass the view’s constraints because views are only virtual layers
+
 -- Query: Update payment_total in the 'invoices_with_balance' view
 -- Action: Set payment_total = invoice_total for the row where invoice_id = 3
 -- Note: After this update, the row might no longer satisfy the view's WHERE condition
