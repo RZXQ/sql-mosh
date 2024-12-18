@@ -17,7 +17,7 @@ FROM sales_by_client
 -- Join: 'clients' and 'invoices' using client_id
 -- Group By: client_id, name
 -- Note: Calculates the sum of invoice_total for each client
-CREATE VIEW sales_by_client AS
+CREATE OR REPLACE VIEW sales_by_client AS
 SELECT c.client_id, c.name, SUM(invoice_total) AS total_sales
 FROM clients c
          JOIN invoices i USING (client_id)
@@ -34,7 +34,7 @@ GROUP BY c.client_id, c.name;
 -- Group By: client_id, name
 -- Note: Calculates balance as the difference between invoice_total and payment_total
 USE sql_invoicing;
-CREATE VIEW clients_balance AS
+CREATE OR REPLACE VIEW clients_balance AS
 SELECT c.client_id, c.name, SUM(i.invoice_total - i.payment_total) AS balance
 FROM invoices i
          JOIN clients c USING (client_id)
