@@ -1,3 +1,5 @@
+-- Use USING when joining tables with identically named columns.
+
 -- Query: Retrieve order ID, customer name, and shipper name
 -- Select: order_id from orders; first_name from customers; name from shippers
 -- From: orders (o)
