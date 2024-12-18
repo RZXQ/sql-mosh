@@ -18,7 +18,7 @@ WHERE order_date < '2019-01-01';
 -- Combine: Both queries using UNION to merge results
 -- Note: Ensures column names are consistent across both queries
 USE sql_store;
-SELECT first_name AS full_name
+SELECT first_name AS full_name -- First Query Determines the Output Column Name
 FROM customers
 UNION
 SELECT name
