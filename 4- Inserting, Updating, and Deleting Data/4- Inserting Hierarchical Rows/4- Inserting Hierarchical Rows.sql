@@ -1,3 +1,7 @@
+-- LAST_INSERT_ID() in MySQL is a built-in function that returns the
+-- most recently generated auto-increment value for the last INSERT
+-- statement executed in the current session/connection, regardless of the database being used.
+    
 -- Query: Insert a new order record into the 'orders' table
 -- Insert Into: 'orders' table
 -- Columns: customer_id, order_date, status
