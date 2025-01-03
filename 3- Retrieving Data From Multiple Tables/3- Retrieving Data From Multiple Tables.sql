@@ -1,62 +1,62 @@
--- ==================== Inner Joins ==================== --
+-- ==================== Inner Joins ====================
 SELECT *
 FROM table1
          INNER JOIN table2 ON table1.column_name = table2.column_name;
 
--- ==================== Self Joins ==================== --
+-- ==================== Self Joins ====================
 SELECT a.column_name, b.column_name
-FROM table_name AS a
-         INNER JOIN table_name AS b ON a.column_name = b.column_name;
+FROM table_name a
+         INNER JOIN table_name b ON a.column_name = b.column_name;
 
--- ==================== Joining Multiple Tables ==================== --
+-- ==================== Joining Multiple Tables ====================
 SELECT *
 FROM table1
          INNER JOIN table2 ON table1.column_name = table2.column_name
          INNER JOIN table3 ON table2.column_name = table3.column_name;
 
--- ==================== Compound Join Conditions ==================== --
+-- ==================== Compound Join Conditions ====================
 SELECT *
 FROM table1
          INNER JOIN table2 ON table1.column1 = table2.column1 AND table1.column2 = table2.column2;
 
--- ==================== Implicit Join Syntax ==================== --
+-- ==================== Implicit Join Syntax ====================
 SELECT *
 FROM table1,
      table2
 WHERE table1.column_name = table2.column_name;
 
--- ==================== Outer Joins ==================== --
+-- ==================== Outer Joins ====================
 SELECT *
 FROM table1
          LEFT JOIN table2 ON table1.column_name = table2.column_name;
 
--- ==================== Outer Join Between Multiple Tables ==================== --
+-- ==================== Outer Join Between Multiple Tables ====================
 SELECT *
 FROM table1
          LEFT JOIN table2 ON table1.column_name = table2.column_name
          LEFT JOIN table3 ON table2.column_name = table3.column_name;
 
--- ==================== Self Outer Joins ==================== --
+-- ==================== Self Outer Joins ====================
 SELECT a.column_name, b.column_name
-FROM table_name AS a
-         LEFT JOIN table_name AS b ON a.column_name = b.column_name;
+FROM table_name a
+         LEFT JOIN table_name b ON a.column_name = b.column_name;
 
--- ==================== The USING Clause ==================== --
+-- ==================== The USING Clause ====================
 SELECT *
 FROM table1
          INNER JOIN table2 USING (column_name);
 
--- ==================== Natural Joins ==================== --
+-- ==================== Natural Joins ====================
 SELECT *
 FROM table1
          NATURAL JOIN table2;
 
--- ==================== Cross Joins ==================== --
+-- ==================== Cross Joins ====================
 SELECT *
 FROM table1
          CROSS JOIN table2;
 
--- ==================== Unions ==================== --
+-- ==================== Unions ====================
 SELECT column1, column2
 FROM table1
 
