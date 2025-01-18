@@ -1,0 +1,7 @@
+| shipper\_id | name                        |
+|:------------|:----------------------------|
+| 1           | Hettinger LLC               |
+| 2           | Schinner-Predovic           |
+| 3           | Satterfield LLC             |
+| 4           | Mraz, Renner and Nolan      |
+| 5           | Waters, Mayert and Prohaska |
