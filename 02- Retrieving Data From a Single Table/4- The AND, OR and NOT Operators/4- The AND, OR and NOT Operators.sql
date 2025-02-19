@@ -44,6 +44,9 @@ FROM customers
 WHERE birth_date <= '1990-01-01'
   AND points <= 1000;
 
+SELECT *
+FROM customers
+WHERE NOT (birth_date > '1990-01-01' OR points > 1000);
 -- ------------------------------------------------------------------------------------
 -- Query 5: Select order items from order_id 6 where total price > 30
 -- Select From: 'order_items' table
