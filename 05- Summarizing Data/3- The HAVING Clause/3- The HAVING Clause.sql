@@ -9,7 +9,7 @@
 -- Note: `WHERE` is used before `GROUP BY` to filter rows, and `HAVING` is used after to filter groups
 USE sql_invoicing;
 SELECT client_id, SUM(invoice_total) AS total_sales, COUNT(*) AS number_of_invoices
-FROM sql_invoicing.invoices
+FROM invoices
 GROUP BY client_id
 HAVING total_sales > 500
    AND number_of_invoices > 5;
