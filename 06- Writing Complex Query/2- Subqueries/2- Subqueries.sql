@@ -7,9 +7,7 @@
 USE sql_store;
 SELECT *
 FROM products
-WHERE unit_price > (SELECT unit_price
-                    FROM products
-                    WHERE product_id = 3);
+WHERE unit_price > (SELECT unit_price FROM products WHERE product_id = 3);
 
 -- ------------------------------------------------------------------------------------
 -- Query: Retrieve employees earning above the average salary
@@ -20,5 +18,4 @@ WHERE unit_price > (SELECT unit_price
 USE sql_hr;
 SELECT *
 FROM employees
-WHERE salary > (SELECT AVG(salary)
-                FROM employees);
+WHERE salary > (SELECT AVG(salary) FROM employees);
