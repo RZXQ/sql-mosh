@@ -1,16 +1,16 @@
--- Add intervals to current date/time
-SELECT DATE_ADD(NOW(), INTERVAL 1 DAY); -- One day from now
-SELECT DATE_ADD(NOW(), INTERVAL 1 YEAR); -- One year from now
+-- Add specific intervals to the current date/time
+SELECT DATE_ADD(NOW(), INTERVAL 1 DAY); -- Current date/time plus 1 day
+SELECT DATE_ADD(NOW(), INTERVAL 1 YEAR); -- Current date/time plus 1 year
 SELECT DATE_ADD(NOW(), INTERVAL -1 YEAR);
--- One year before now (using negative INTERVAL)
+-- Current date/time minus 1 year (using negative interval)
 
--- Subtract intervals from current date/time
+-- Subtract specific intervals from the current date/time explicitly
 SELECT DATE_SUB(NOW(), INTERVAL 1 YEAR);
--- One year before now (using DATE_SUB)
+-- Current date/time minus 1 year
 
--- Calculate difference in days between two date/time values
+-- Find duration in days between two date/time values
 SELECT DATEDIFF('2019-01-05 09:00', '2019-01-01 17:00');
--- Result in days
+-- Days between the two specified dates
 
--- Calculate difference in seconds between two times
-SELECT TIME_TO_SEC('09:02') - TIME_TO_SEC('09:00'); -- Result in seconds
+-- Find time difference in seconds
+SELECT TIME_TO_SEC('09:02') - TIME_TO_SEC('09:00'); -- Seconds between specified times
