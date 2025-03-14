@@ -25,10 +25,9 @@ SELECT trim('     Sky     ');
 -- 4. Left and Right Functions:
 -- Purpose: Extracts substring from left or right side of a string
 -- =========================================================
--- Extract LEFT 4 characters
-SELECT left('Kindergarten', 4);
--- Extract RIGHT 6 characters
+SELECT left('Kindergarten', 4); -- Extract LEFT 4 characters
 SELECT right('Kindergarten', 6);
+-- Extract RIGHT 6 characters
 
 -- =========================================================
 -- 5. Substring Functions:
@@ -44,7 +43,7 @@ SELECT substr('Kindergarten', 3, 5);
 -- Returns 0 if substring is not found; Case-sensitive
 -- =========================================================
 SELECT locate('n', 'Kindergarten'); -- position of first occurrence of 'n'
-SELECT locate('N', 'Kindergarten'); -- position of 'N', (case-sensitive, returns 0)
+SELECT locate('N', 'Kindergarten'); -- position of 'N' (case-sensitive, returns 0)
 SELECT locate('q', 'Kindergarten'); -- position of nonexistent 'q', should return 0
 SELECT locate('garten', 'Kindergarten');
 -- position of substring 'garten'
@@ -61,6 +60,8 @@ SELECT replace('Kindergarten', 'garten', 'garden');
 -- Purpose: Concatenate strings together
 -- =========================================================
 SELECT concat('first', 'last'); -- Simple concatenation
+
 USE sql_store;
+
 SELECT concat(first_name, ' ', last_name) -- Concatenate columns with space
 FROM customers;
