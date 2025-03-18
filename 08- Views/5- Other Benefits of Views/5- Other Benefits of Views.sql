@@ -29,7 +29,7 @@ WHERE invoice_total - payment_total > 0;
 
 -- Example: Rename 'invoice_total' to 'total_invoice'
 -- Without a view, you update ALL your queries.
--- With a view, you update the view definition once:
+-- With a view, you update the view definition once,and bring back the original column name as long as the query uses the view.
 USE sql_invoicing;
 CREATE OR REPLACE VIEW invoices_with_balance AS
 SELECT invoice_id, total_invoice - payment_total AS balance
