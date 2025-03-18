@@ -1,4 +1,4 @@
--- Why stored procedure?
--- 1. Store and organize SQL
--- 2. Faster execution
--- 3. Data security
+-- Why use stored procedures?
+-- 1. Store and organize SQL: Keep SQL statements in one place for easy reuse.
+-- 2. Faster execution: Runs quicker because queries are ready-to-use.
+-- 3. Data security: Allows users to run queries safely without direct table access.
