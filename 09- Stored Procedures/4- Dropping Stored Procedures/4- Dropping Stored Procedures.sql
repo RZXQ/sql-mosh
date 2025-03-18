@@ -7,6 +7,7 @@
 USE sql_invoicing;
 
 DROP PROCEDURE IF EXISTS get_clients;
+
 DELIMITER $$;
 CREATE PROCEDURE get_clients()
 BEGIN
