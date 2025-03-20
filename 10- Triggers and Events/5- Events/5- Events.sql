@@ -11,8 +11,6 @@ SHOW VARIABLES LIKE 'event%'; -- ensure the event_scheduler is ON
 SET GLOBAL event_scheduler = ON;
 -- If it is off, we need to turn this on.
 
-SHOW EVENTS FROM sql_invoicing;
-
 DELIMITER $$
 -- The events' name should start with timer.
 -- Some example scheduling formats: AT '2019-05-01', EVERY 1 DAY, EVERY 2 DAY, EVERY 1 YEAR.
