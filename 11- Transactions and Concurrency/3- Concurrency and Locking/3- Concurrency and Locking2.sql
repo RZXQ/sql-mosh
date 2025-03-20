@@ -1,10 +1,10 @@
 USE sql_store;
 
-# If another transaction is modifying the same row, this transaction will wait (be blocked)
-# until the first transaction completes (i.e., commits or rolls back).
-# If waiting exceeds the timeout limit, the current transaction will automatically roll back.
-# When a transaction modifies data, MySQL automatically places a lock on that row
-# preventing other transactions from modifying the same data simultaneously.
+# When a transaction updates a row, MySQL places a lock on it.
+# Other transactions needing to update the same row will be blocked (wait)
+# until the first transaction finishes (commits or rolls back).
+# If the waiting time exceeds MySQL's timeout limit, the waiting transaction
+# gets automatically rolled back.
 START TRANSACTION;
 
 UPDATE customers
