@@ -59,6 +59,18 @@ WHERE address LIKE '%trail%'
 -- Select From: 'customers' table
 -- Filter: phone LIKE '%9'
 -- Note: The `%` wildcard allows any characters before '9'.
+--
+-- Additional Note:
+-- 1. Non-Numeric Characters:
+--    Phone numbers commonly contain formatting symbols like parentheses, spaces, dash symbols,
+--    or plus signs for international dialing. For example: "(123) 456-7899" or "+1-800-999-9999".
+--    These must be stored as strings because of these non-numeric characters.
+-- 2. No Arithmetic Calculations Needed:
+--    Usually, phone numbers don't require numeric operations (addition, subtraction, etc.),
+--    so there's no practical reason to store them as numeric data.
+-- 3. Leading Zeros:
+--    Phone numbers or similar codes might have leading zeros (e.g., "0123456789"), which would
+--    be lost if stored as numeric data because numeric types discard leading zeros.
 -- ------------------------------------------------------------------------------------
 USE sql_store;
 SELECT *
