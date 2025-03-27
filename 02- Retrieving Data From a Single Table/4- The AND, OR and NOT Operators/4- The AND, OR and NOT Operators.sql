@@ -27,10 +27,22 @@ WHERE birth_date > '1990-01-01'
 -- Filter: NOT (birth_date > '1990-01-01' OR points > 1000)
 -- Note: Using **De Morgan’s Law**, this is equivalent to Query 4
 -- ------------------------------------------------------------------------------------
+
+-- De Morgan’s Law: NOT (A OR B) = NOT A AND NOT B
 USE sql_store;
 SELECT *
 FROM customers
 WHERE NOT (birth_date > '1990-01-01' OR points > 1000);
+
+SELECT *
+FROM customers
+WHERE NOT birth_date > '1990-01-01'
+  AND NOT points > 1000;
+
+SELECT *
+FROM customers
+WHERE birth_date <= '1990-01-01'
+  AND points <= 1000;
 
 -- ------------------------------------------------------------------------------------
 -- Query 4: Select customers born on or before 1990-01-01 AND points ≤ 1000
