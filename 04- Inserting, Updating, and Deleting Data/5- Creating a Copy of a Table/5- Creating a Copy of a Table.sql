@@ -2,6 +2,8 @@
 -- Create Table: `orders_archived`
 -- Source: Copies all columns and data from the `orders` table
 -- Note: Primary key and AUTO_INCREMENT properties are not copied
+-- Note: CREATE TABLE AS SELECT copies only column definitions (data types) and data values.
+-- It does NOT copy primary keys, AUTO_INCREMENT properties, indexes, constraints, triggers, or default column values.
 USE sql_store;
 CREATE TABLE orders_archived AS
 SELECT *
