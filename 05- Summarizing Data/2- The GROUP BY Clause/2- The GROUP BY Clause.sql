@@ -1,3 +1,5 @@
+-- FROM -> JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> DISTINCT -> ORDER BY -> LIMIT/OFFSET
+    
 -- Query: Retrieve total sales by client from the `invoices` table
 -- Select:
 --   - client_id
