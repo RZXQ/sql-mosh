@@ -1,50 +1,52 @@
--- Query: Update payment details for invoices linked to a specific client
--- Update Table: `invoices`
--- Columns:
---   - payment_total (set to 50% of the invoice_total)
---   - payment_date (set to due_date)
--- Filter: Updates rows where client_id matches the client_id of the client named 'Myworks'
--- Note: Uses a subquery to find the client_id based on the client's name
+-- Query: Update payment details in the `invoices` table for the client named 'Myworks'.
+-- Details:
+--   - Set `payment_total` to half (`50%`) of the `invoice_total`
+--   - Set `payment_date` to the existing `due_date`
+-- Condition:
+--   - Only update invoices linked to the client with the name exactly matching 'Myworks'
+-- Hint:
+--   - You'll need a subquery to find `client_id` from the `clients` table matching this client name.
 USE sql_invoicing;
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
-WHERE client_id = (SELECT c.client_id
-                   FROM clients c
-                   WHERE name = 'Myworks');
+WHERE client_id = (SELECT c.client_id FROM clients c WHERE name = 'Myworks');
 
--- Query: Update payment details for invoices linked to clients in specific states
--- Update Table: `invoices`
--- Columns:
---   - payment_total (set to 50% of the invoice_total)
---   - payment_date (set to due_date)
--- Filter: Updates rows where client_id matches the client_id of clients in 'CA' or 'NY'
--- Note: Uses a subquery to find client_ids based on the state
+-- Query: Update payment details in the `invoices` table for invoices of clients located in 'CA' or 'NY'.
+-- Details:
+--   - Set `payment_total` to half (`50%`) of the `invoice_total`
+--   - Set `payment_date` to the existing `due_date`
+-- Condition:
+--   - Only update invoices linked to clients from states 'CA' or 'NY'
+-- Hint:
+--   - Use a subquery to select relevant `client_id` values from the `clients` table, filtering by client's `state`.
 USE sql_invoicing;
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
 WHERE client_id IN (SELECT c.client_id FROM clients c WHERE state IN ('CA', 'NY'));
 
--- Query: Update payment details for invoices with no payment date
--- Update Table: `invoices`
--- Columns:
---   - payment_total (set to 50% of the invoice_total)
---   - payment_date (set to due_date)
--- Filter: Updates rows where payment_date is NULL
--- Note: Ensures all unpaid invoices have updated payment details
+-- Query: Update unpaid invoices (those with no existing payment date) in the `invoices` table.
+-- Details:
+--   - Set `payment_total` to half (`50%`) of the `invoice_total`
+--   - Set `payment_date` to the existing `due_date`
+-- Condition:
+--   - Only update rows where `payment_date` is NULL (unpaid invoices)
+-- Hint:
+--   - Directly filter using a WHERE condition on `payment_date` IS NULL.
 USE sql_invoicing;
 UPDATE invoices
 SET payment_total = invoice_total * 0.5,
     payment_date  = due_date
 WHERE payment_date IS NULL;
 
--- Query: Mark customers as 'Gold customer' in the orders table
--- Update Table: `orders`
--- Columns:
---   - comments (set to 'Gold customer')
--- Filter: Updates rows where customer_id matches the customer_id of customers with points > 3000
--- Note: Uses a subquery to find eligible customers based on their points
+-- Query: Mark high-value customers' orders as 'Gold customer' in the `orders` table.
+-- Details:
+--   - Set `comments` column to 'Gold customer'
+-- Condition:
+--   - Only update orders for customers who have more than 3000 points in the `customers` table
+-- Hint:
+--   - Use an IN subquery to identify `customer_id` values from the `customers` table based on `points`.
 USE sql_store;
 UPDATE orders
 SET comments = 'Gold customer'
