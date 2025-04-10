@@ -30,8 +30,9 @@ GROUP BY product_id, name;
 
 
 # b. using subquery
-SELECT product_id,
-       name,
-       IF((SELECT COUNT(*) FROM order_items oi WHERE oi.product_id = p.product_id) > 1, 'Many times',
-          'Once') AS frequence
-FROM products p;
+SELECT product_id, name, frequence, IF(frequence > 1, 'Many times', 'Once')
+FROM (SELECT product_id,
+             name,
+             (SELECT COUNT(*) FROM order_items oi WHERE oi.product_id = p.product_id) AS frequence
+      FROM products p) AS derived
+WHERE frequence >= 1;
