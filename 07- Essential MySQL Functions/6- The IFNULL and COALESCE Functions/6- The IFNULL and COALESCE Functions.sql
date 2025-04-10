@@ -1,3 +1,9 @@
+-- 1. Databases Reporting: When generating reports, having a meaningful label for missing data enhances readability.
+-- SELECT name, COALESCE(email, phone, 'No Contact Information') AS preferred_contact FROM customers;
+-- 2. Configuration Defaults: When fetching configuration data, `COALESCE` helps to return default values if customized values are missing.
+-- SELECT COALESCE(custom_timeout, global_timeout, 30) AS timeout FROM user_settings;
+
+
 -- Query: Retrieve order IDs and replace NULL shipper_id values with 'Not Assigned'
 -- Select From: 'orders' table
 -- Columns:
