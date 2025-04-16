@@ -1,5 +1,6 @@
--- Remarks on Views:
--- With CREATE OR REPLACE VIEW, there's no need for DROP VIEW IF EXISTS before creating/updating a view.
+-- Notes on Views:
+-- - Use CREATE OR REPLACE VIEW to simplify updates without needing DROP VIEW IF EXISTS.
+-- - Best practice: Store view definitions in a dedicated "views" folder under version control.
 
 USE sql_invoicing;
 
