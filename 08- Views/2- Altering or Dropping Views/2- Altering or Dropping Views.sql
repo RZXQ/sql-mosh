@@ -1,3 +1,6 @@
+-- Remarks on Views:
+-- With CREATE OR REPLACE VIEW, there's no need for DROP VIEW IF EXISTS before creating/updating a view.
+
 USE sql_invoicing;
 
 -- Query: Create a view to get the total sales for each client
