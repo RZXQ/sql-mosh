@@ -1,8 +1,9 @@
--- updatable table view:
--- doesn't have those:
--- 1. Distinct
--- 2. Aggregate functions(min, max, sum)
--- 3. union
+-- Notes on updatable views:
+-- The following features are NOT allowed in updatable views:
+-- 1. DISTINCT
+-- 2. Aggregate functions (e.g., MIN, MAX, SUM, COUNT, AVG)
+-- 3. GROUP BY or HAVING clauses
+-- 4. UNION or UNION ALL
 
 USE sql_invoicing;
 
