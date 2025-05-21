@@ -26,7 +26,7 @@ BEGIN
 
     SET risk_factor = invoices_total / invoices_count * 5;
     SELECT risk_factor;
-END$$
+END $$
 DELIMITER ;
 
 CALL get_risk_factor();
