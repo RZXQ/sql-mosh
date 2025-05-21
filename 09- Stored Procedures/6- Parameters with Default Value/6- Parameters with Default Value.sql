@@ -6,6 +6,27 @@
 --   - From: `clients` table
 --   - Filter (Where): Returns rows where `state` matches the input parameter, or all rows if `state` is `NULL`
 -- Note: Uses `IFNULL` to handle `NULL` values for the `state` parameter
+
+-- Approach A: use IF...ELSE
+USE sql_invoicing;
+DROP PROCEDURE IF EXISTS get_clients_by_state;
+
+DELIMITER $$
+CREATE PROCEDURE get_clients_by_state(state CHAR(2))
+BEGIN
+    IF state IS NULL THEN
+        SELECT *
+        FROM clients;
+    ELSE
+        SELECT * FROM clients c WHERE c.state = state;
+    END IF;
+END
+$$
+DELIMITER ;
+
+CALL get_clients_by_state(null);
+
+-- Approach B: USE IFNULL
 USE sql_invoicing;
 DROP PROCEDURE IF EXISTS get_clients_by_state;
 DELIMITER $$
