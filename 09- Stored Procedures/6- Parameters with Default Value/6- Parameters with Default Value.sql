@@ -20,11 +20,10 @@ BEGIN
     ELSE
         SELECT * FROM clients c WHERE c.state = state;
     END IF;
-END
-$$
+END $$
 DELIMITER ;
 
-CALL get_clients_by_state(null);
+CALL get_clients_by_state(NULL);
 
 -- Approach B: USE IFNULL
 USE sql_invoicing;
@@ -35,7 +34,7 @@ BEGIN
     SELECT *
     FROM clients c
     WHERE c.state = IFNULL(state, c.state);
-END$$
+END $$
 DELIMITER ;
 
 -- Call the stored procedure with `NULL` to retrieve all clients
@@ -61,7 +60,7 @@ BEGIN
     FROM payments p
     WHERE p.client_id = IFNULL(client_id, p.client_id)
       AND p.payment_method = IFNULL(payment_method_id, p.payment_method);
-END$$
+END $$
 DELIMITER ;
 
 -- Call the stored procedure with specific values for filtering
