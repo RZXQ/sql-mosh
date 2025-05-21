@@ -24,7 +24,8 @@ BEGIN
 END $$
 DELIMITER ;
 
-set @invoice_count = 0;
+-- set @invoice_count = 0;   -- Optional
+-- set @invoice_total = 0;   -- Optional
 CALL get_unpaid_invoices_for_client(3, @invoice_count, @invoice_total);
 
 SELECT @invoice_count, @invoice_total;
