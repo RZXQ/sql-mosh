@@ -1,22 +1,26 @@
--- This SQL script enables MySQL event scheduling and creates a yearly event.
--- The event automatically deletes audit records older than 1 year from the payments_audit table.
--- Make sure the event scheduler is enabled before running the event creation part.
+-- MySQL Event Scheduler: Automated Database Maintenance
+-- This script sets up automatic yearly cleanup of old audit records.
 
 USE sql_invoicing;
 
-# Event: a task (or block of SQL code) that gets executed according to a schedule
-# Before using events, we need to turn on the MySQL events scheduler that constantly looks for events to execute.
-
-SHOW VARIABLES LIKE 'event%'; -- ensure the event_scheduler is ON
+-- Step 1: Check if event scheduler is running
+SHOW VARIABLES LIKE 'event%'; -- Should show event_scheduler = ON
 SET GLOBAL event_scheduler = ON;
--- If it is off, we need to turn this on.
+-- Enable it if currently OFF
 
+-- Step 2: Create a yearly cleanup event
 DELIMITER $$
--- The events' name should start with timer.
--- Some example scheduling formats: AT '2019-05-01', EVERY 1 DAY, EVERY 2 DAY, EVERY 1 YEAR.
+
 CREATE EVENT yearly_delete_stale_audit_rows
-    ON SCHEDULE EVERY 1 YEAR STARTS '2019-01-01' ENDS '2025-03-01'
+    ON SCHEDULE
+        EVERY 1 YEAR -- Runs once per year
+            STARTS '2019-01-01' -- First execution date
+            ENDS '2025-03-01' -- Last execution date (optional)
     DO BEGIN
-    DELETE FROM payments_audit WHERE action_date < NOW() - INTERVAL 1 YEAR;
+    -- Remove audit records older than 1 year
+    DELETE
+    FROM payments_audit
+    WHERE action_date < NOW() - INTERVAL 1 YEAR;
 END$$
+
 DELIMITER ;
