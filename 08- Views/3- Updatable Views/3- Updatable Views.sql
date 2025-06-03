@@ -46,4 +46,5 @@ WHERE invoice_id = 1;
 -- Condition: where invoice_id = 2
 UPDATE invoices_with_balance
 SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
+# SET due_date = due_date + INTERVAL 2 DAY
 WHERE invoice_id = 2;
