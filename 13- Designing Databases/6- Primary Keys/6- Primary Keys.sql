@@ -14,6 +14,7 @@
 -- +--------------+--------------+----------+
 -- PK = Primary Key, AI = Auto Increment
 
+DROP TABLE IF EXISTS students;
 CREATE TABLE students
 (
     student_id     INT AUTO_INCREMENT PRIMARY KEY,
@@ -45,10 +46,11 @@ CREATE TABLE students
 -- +-------------+--------------+----------+
 -- PK = Primary Key, AI = Auto Increment
 
+DROP TABLE IF EXISTS courses;
 CREATE TABLE courses
 (
     course_id  INT AUTO_INCREMENT PRIMARY KEY,
     title      VARCHAR(255)  NOT NULL,
     price      DECIMAL(5, 2) NOT NULL,
-    instructor VARCHAR(255)  NOT NULL,
-);
+    instructor VARCHAR(255)  NOT NULL
+)
