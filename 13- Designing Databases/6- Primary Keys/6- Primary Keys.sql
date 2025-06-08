@@ -1,3 +1,7 @@
+--  A primary key in SQL always meets these two conditions:
+-- Unique: Each value in the primary key column(s) must be unique across all rows in the table.
+-- Not null: A primary key column cannot have values; every row must have a value for the primary key.
+
 -- Table: students
 -- +--------------+--------------+----------+
 -- | Column Name  | Type         | Notes    |
