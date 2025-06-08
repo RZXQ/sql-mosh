@@ -26,6 +26,8 @@
 --   SET NULL    : Sets child column to NULL if parent is deleted/updated.
 --   SET DEFAULT : Sets child column to default value if parent is deleted/updated.
 
+DROP TABLE IF EXISTS enrollments;
+
 CREATE TABLE enrollments
 (
     date       DATETIME      NOT NULL,
