@@ -6,7 +6,7 @@
 -- - Each foreign key constraint name must be unique within the same schema.
 
 
-USE sql_students;
+use sql_school;
 
 DROP TABLE IF EXISTS tags;
 CREATE TABLE tags

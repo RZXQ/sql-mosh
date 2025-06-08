@@ -25,6 +25,7 @@
 --   NO ACTION   : Similar to RESTRICT, but checks at end of statement.
 --   SET NULL    : Sets child column to NULL if parent is deleted/updated.
 --   SET DEFAULT : Sets child column to default value if parent is deleted/updated.
+use sql_school;
 
 DROP TABLE IF EXISTS enrollments;
 

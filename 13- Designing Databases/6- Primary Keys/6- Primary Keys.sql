@@ -13,6 +13,7 @@
 -- | dateRegistered | DATETIME   | NOT NULL |
 -- +--------------+--------------+----------+
 -- PK = Primary Key, AI = Auto Increment
+use sql_school;
 
 DROP TABLE IF EXISTS students;
 CREATE TABLE students

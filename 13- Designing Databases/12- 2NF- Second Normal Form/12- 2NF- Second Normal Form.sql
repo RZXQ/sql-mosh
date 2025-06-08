@@ -1,4 +1,4 @@
-use sql_students;
+use sql_school;
 
 DROP TABLE IF EXISTS instructors;
 
