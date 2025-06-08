@@ -23,6 +23,17 @@ CREATE TABLE students
     dateRegistered DATETIME     NOT NULL
 );
 
+# CREATE TABLE students
+# (
+#     student_id     INT AUTO_INCREMENT,
+#     first_name     VARCHAR(50)  NOT NULL,
+#     last_name      VARCHAR(50)  NOT NULL,
+#     email          VARCHAR(255) NOT NULL,
+#     dateRegistered DATETIME     NOT NULL,
+#     PRIMARY KEY (student_id)
+# );
+#
+
 -- Table: courses
 -- +-------------+--------------+----------+
 -- | Column Name | Type         | Notes    |
