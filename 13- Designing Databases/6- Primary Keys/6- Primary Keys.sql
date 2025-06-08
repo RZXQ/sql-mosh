@@ -49,8 +49,11 @@ CREATE TABLE students
 DROP TABLE IF EXISTS courses;
 CREATE TABLE courses
 (
-    course_id  INT AUTO_INCREMENT PRIMARY KEY,
-    title      VARCHAR(255)  NOT NULL,
-    price      DECIMAL(5, 2) NOT NULL,
-    instructor VARCHAR(255)  NOT NULL
+    course_id     INT AUTO_INCREMENT PRIMARY KEY,
+    title         VARCHAR(255)  NOT NULL,
+    price         DECIMAL(5, 2) NOT NULL,
+    instructor_id SMALLINT      NOT NULL,
+    CONSTRAINT courses_fk_instructor_id FOREIGN KEY (instructor_id) REFERENCES instructors (instructor_id)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+
 )
