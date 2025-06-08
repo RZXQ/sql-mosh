@@ -42,7 +42,6 @@ CREATE TABLE students
 -- | title       | VARCHAR(255) | NOT NULL |
 -- | price       | DECIMAL(5,2) | NOT NULL |
 -- | instructor  | VARCHAR(255) | NOT NULL |
--- | tags        | VARCHAR(255) | NOT NULL |
 -- +-------------+--------------+----------+
 -- PK = Primary Key, AI = Auto Increment
 
@@ -52,5 +51,4 @@ CREATE TABLE courses
     title      VARCHAR(255)  NOT NULL,
     price      DECIMAL(5, 2) NOT NULL,
     instructor VARCHAR(255)  NOT NULL,
-    tags       VARCHAR(255)  NOT NULL
 );
