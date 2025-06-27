@@ -15,7 +15,6 @@ USE sql_store;
 -- Filter: WHERE state = 'CA' (exact match on string column)
 -- Expected without index: type = 'ALL' (full table scan)
 -- Expected with index: type = 'ref' (index reference lookup)
-CREATE INDEX idx_state ON customers (state);
 EXPLAIN
 SELECT customer_id
 FROM customers
@@ -27,19 +26,18 @@ WHERE state = 'CA';
 -- Filter: WHERE points > 1000 (range condition on numeric column)
 -- Expected without index: type = 'ALL' (full table scan)
 -- Expected with index: type = 'range' (index range scan)
-CREATE INDEX idx_points ON customers (points);
-EXPLAIN
-SELECT customer_id
-FROM customers
-WHERE points > 1000;
 
 -- -------------------------
--- COMMENTARY ON KEY TERMS --
+-- How MySQL Searches with Different Index Types (Book Metaphor)
 -- -------------------------
--- Index: 
---   Makes searching for values in a column much faster, just like a book index helps you find a topic quickly.
--- type: 
---   Shows how the database plans to access the data.
---   "ALL"   = Full table scan (slowest; every row is checked).
---   "ref"   = Index lookup for a specific value (fast lookup for exact matches).
---   "range" = Index lookup for a range of values (fast for conditions like >, <, BETWEEN).
+-- ALL:
+--   MySQL checks every row in the table.
+--   (Like reading every page of a book to find your topic. Slowest.)
+--
+-- ref:
+--   MySQL uses the index to directly look up a specific value.
+--   (Like looking at the index in the back of the book, jumping straight to the right page for your topic. Fast for exact matches.)
+--
+-- range:
+--   MySQL uses the index to find all values that fall within a range.
+--   (Like using the book's index to find all pages for topics between "California" and "Colorado". Fast for ranged searches.)
