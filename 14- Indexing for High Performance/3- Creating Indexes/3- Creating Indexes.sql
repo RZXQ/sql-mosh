@@ -15,6 +15,7 @@ USE sql_store;
 -- Filter: WHERE state = 'CA' (exact match on string column)
 -- Expected without index: type = 'ALL' (full table scan)
 -- Expected with index: type = 'ref' (index reference lookup)
+CREATE INDEX idx_state ON customers (state);
 EXPLAIN
 SELECT customer_id
 FROM customers
@@ -26,8 +27,12 @@ WHERE state = 'CA';
 -- Filter: WHERE points > 1000 (range condition on numeric column)
 -- Expected without index: type = 'ALL' (full table scan)
 -- Expected with index: type = 'range' (index range scan)
+CREATE INDEX idx_points ON customers (points);
+EXPLAIN
+SELECT customer_id
+FROM customers
+WHERE points > 1000;
 
--- -------------------------
 -- How MySQL Searches with Different Index Types (Book Metaphor)
 -- -------------------------
 -- ALL:
